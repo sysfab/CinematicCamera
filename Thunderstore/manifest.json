@@ -1,0 +1,9 @@
+{
+    "name": "CinematicCamera",
+    "version_number": "1.1.0",
+    "description": "Mod that enhances game's camera (configurable)",
+    "website_url": "https://github.com/sysfab/CinematicCamera",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}
