@@ -32,7 +32,6 @@ namespace CinematicCamera
         internal static ConfigEntry<float> MouseFactorXMultiplier;
         internal static ConfigEntry<float> MouseFactorYMultiplier;
         internal static ConfigEntry<float> MouseFactorZMultiplier;
-        internal static ConfigEntry<float> MouseFactorRunningMultiplier;
 
         internal static ConfigEntry<bool> EnableFallingFactor;
         internal static ConfigEntry<float> FallingFactorSmoothness;
@@ -71,7 +70,6 @@ namespace CinematicCamera
             MouseFactorXMultiplier = Config.Bind("Mouse Factor", "X Multiplier", 1.0f, "X axis multiplier, Default: 1");
             MouseFactorYMultiplier = Config.Bind("Mouse Factor", "Y Multiplier", 1.0f, "Y axis multiplier, Default: 1");
             MouseFactorZMultiplier = Config.Bind("Mouse Factor", "Z Multiplier", 1.0f, "Z axis multiplier, Default: 1");
-            MouseFactorRunningMultiplier = Config.Bind("Mouse Factor", "Running Multiplier", 1.0f, "Running multiplier, Default: 1");
 
             EnableFallingFactor = Config.Bind("Falling Factor", "Enabled", true, "Falling will affect camera");
             FallingFactorSmoothness = Config.Bind("Falling Factor", "Smoothness", 1.0f, "Smoothness of falling factor, Default: 1. Values from 0.5 to 2 recommended");

@@ -31,7 +31,6 @@ namespace CinematicCamera.Patches
         internal static ConfigEntry<float> MouseFactorXMultiplier = CinematicCameraBase.MouseFactorXMultiplier;
         internal static ConfigEntry<float> MouseFactorYMultiplier = CinematicCameraBase.MouseFactorYMultiplier;
         internal static ConfigEntry<float> MouseFactorZMultiplier = CinematicCameraBase.MouseFactorZMultiplier;
-        internal static ConfigEntry<float> MouserFactorRunningFactor = CinematicCameraBase.MoveFactorRunningMultiplier;
 
         internal static ConfigEntry<bool> EnableFallingFactor = CinematicCameraBase.EnableFallingFactor;
         internal static ConfigEntry<float> FallingFactorSmoothness = CinematicCameraBase.FallingFactorSmoothness;
@@ -67,8 +66,14 @@ namespace CinematicCamera.Patches
         private static Vector3 smoothLookVector = Vector3.zero;
         private static Vector3 smoothVelocity = Vector3.zero;
         private static Vector2 smoothMove = Vector2.zero;
+        private static float runningMultiplier = 1f;
 
         private static float Ticks = 0f;
+
+        private static float lerp(float a, float b, float w)
+        {
+            return a + (b - a) * w;
+        }
 
         private static void SaveCameraState()
         {
@@ -149,7 +154,8 @@ namespace CinematicCamera.Patches
                                 ref bool ___isClimbingLadder,
                                 ref bool ___inShockingMinigame,
                                 ref bool ___inVehicleAnimation,
-                                ref int ___health)
+                                ref int ___health,
+                                ref bool ___isSprinting)
         {
             SaveCameraState();
 
@@ -178,6 +184,14 @@ namespace CinematicCamera.Patches
             } else
             {
                 isInVehicle = false;
+            }
+
+            if (___isSprinting)
+            {
+                runningMultiplier = lerp(runningMultiplier, 1f, 0.1f);
+            } else
+            {
+                runningMultiplier = lerp(runningMultiplier, 1f, 0.1f);
             }
 
             if (___inTerminalMenu | ___quickMenuManager.isMenuOpen | ___isTypingChat | ___disableMoveInput | ___inSpecialInteractAnimation | ___isClimbingLadder | ___inShockingMinigame | isInVehicle) { return; }
@@ -229,7 +243,7 @@ namespace CinematicCamera.Patches
                 // Strafing
                 if (Math.Abs(smoothMove.x) > 0.1f)
                 {
-                    camTransform.localRotation = camTransform.localRotation * Quaternion.Euler(0, 0, -smoothMove.x * MoveFactorStrafeMultiplier.Value);
+                    camTransform.localRotation = camTransform.localRotation * Quaternion.Euler(0, 0, -smoothMove.x * MoveFactorStrafeMultiplier.Value * lerp(1f, MoveFactorRunningMultiplier.Value, runningMultiplier));
                 }
 
                 // Forward/Backward
