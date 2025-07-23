@@ -31,6 +31,7 @@ namespace CinematicCamera.Patches
         internal static ConfigEntry<float> MouseFactorXMultiplier = CinematicCameraBase.MouseFactorXMultiplier;
         internal static ConfigEntry<float> MouseFactorYMultiplier = CinematicCameraBase.MouseFactorYMultiplier;
         internal static ConfigEntry<float> MouseFactorZMultiplier = CinematicCameraBase.MouseFactorZMultiplier;
+        internal static ConfigEntry<float> MouserFactorRunningFactor = CinematicCameraBase.MoveFactorRunningMultiplier;
 
         internal static ConfigEntry<bool> EnableFallingFactor = CinematicCameraBase.EnableFallingFactor;
         internal static ConfigEntry<float> FallingFactorSmoothness = CinematicCameraBase.FallingFactorSmoothness;
@@ -41,6 +42,7 @@ namespace CinematicCamera.Patches
         internal static ConfigEntry<float> MoveFactorStrafeMultiplier = CinematicCameraBase.MoveFactorStrafeMultiplier;
         internal static ConfigEntry<float> MoveFactorForwardMultiplier = CinematicCameraBase.MoveFactorForwardMultiplier;
         internal static ConfigEntry<float> MoveFactorBackwardMultiplier = CinematicCameraBase.MoveFactorBackwardMultiplier;
+        internal static ConfigEntry<float> MoveFactorRunningMultiplier = CinematicCameraBase.MoveFactorRunningMultiplier;
 
         internal static ConfigEntry<bool> EnableFallShake = CinematicCameraBase.EnableFallShake;
         internal static ConfigEntry<float> FallShakeMultiplier = CinematicCameraBase.FallShakeMultiplier;
